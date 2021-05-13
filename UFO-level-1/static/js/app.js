@@ -24,6 +24,10 @@ function runFilterTable() {
     var date = filteredDate.map(dates => dates.datetime);
     var city = filteredDate.map(cities => cities.city);
     var state = filteredDate.map(states => states.state);
+    var country = filteredDate.map(countries => countries.country);
+    var shape = filteredDate.map(shapes => shapes.shape);
+    var duration = filteredDate.map(minutes => minutes.durationMinutes);
+    var comment = filteredDate.map(comments => comments.comments)
     
     console.log(city);
 
@@ -35,7 +39,11 @@ function runFilterTable() {
         var filteredDict = {
             date:date[i],
             city:city[i],
-            state:state[i]
+            state:state[i],
+            country:country[i],
+            shape:shape[i],
+            durationMinutes:duration[i],
+            comments:comment[i]
         };
         filteredList.push(filteredDict);
     }
@@ -54,5 +62,15 @@ function runFilterTable() {
      });
     });
 
-}
+    // Validate If User Date Input Is Correct 
+    if (filteredList.length != 0) {
+        var text = d3.select("#validation");
+        text.text("");
+    }
 
+    if (filteredList.length == 0) {
+        var text = d3.select("#validation");
+        text.text("Invalid Date: Please Enter Date In Correct Format.");
+    }
+
+}
