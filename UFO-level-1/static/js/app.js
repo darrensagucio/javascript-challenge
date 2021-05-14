@@ -63,13 +63,13 @@ function runFilterTable() {
     });
 
     // Validate If User Date Input Is Correct 
+    var text = d3.select("#validation");
+
     if (filteredList.length != 0) {
-        var text = d3.select("#validation");
         text.text("");
     }
 
     if (filteredList.length == 0) {
-        var text = d3.select("#validation");
         text.text("Invalid Date: Please Enter Date In Correct Format.");
     }
 
